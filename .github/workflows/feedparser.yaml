@@ -17,6 +17,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Create 'articles' folder
+        run: mkdir -p articles
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -34,6 +37,6 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git add .
+          git add articles/*
           git diff --quiet || git commit -m "Add new files for RSS articles"
           git push
