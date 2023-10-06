@@ -27,7 +27,7 @@ def fetch_and_create_files(rss_urls_file):
                 date_str = "N/A"
 
             # Check if the title includes "bug bytes"
-            if "bug_bytes" in title.lower():
+            if "bug bytes" in title.lower():
                 # If the title includes "bug_bytes," use tags only without description
                 file_content = f"title: {title}\ntags: bug_bytes\nlink: {link}\ndate: {date_str}"
             else:
