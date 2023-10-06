@@ -34,8 +34,6 @@ jobs:
         run: |
           cd articles
           python ../.github/scripts/rss_bot.py
-          cat articles/bug_bytes_#207_-iis,_llms_and_ios.md
-          cat articles/bug_bytes_#212_–_xss_payloads,_idor_prediction_and_cloud_security.md
 
       - name: Commit and push changes
         run: |
