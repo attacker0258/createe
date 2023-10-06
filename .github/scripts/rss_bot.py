@@ -17,5 +17,5 @@ def fetch_and_create_files(rss_url):
             file.write(file_content)
 
 if __name__ == "__main__":
-    rss_url = 'https://blog.intigriti.com/category/bugbytes/'
+    rss_url = 'https://blog.intigriti.com/category/bugbytes/feed/'
     fetch_and_create_files(rss_url)
