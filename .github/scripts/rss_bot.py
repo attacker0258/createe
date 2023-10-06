@@ -26,20 +26,16 @@ def fetch_and_create_files(rss_urls_file):
             else:
                 date_str = "N/A"
 
-            # Check if the title includes "bug_bytes"
-            is_bug_bytes = "bug_bytes" in title.lower()
-
-            # Generate file content
-            file_content = f"title: {title}\nlink: {link}\ndate: {date_str}"
-            if not is_bug_bytes:
+            # Check if the title includes "bug bytes"
+            if "bug_bytes" in title.lower():
+                # If the title includes "bug_bytes," use tags only without description
+                file_content = f"title: {title}\ntags: bug_bytes\nlink: {link}\ndate: {date_str}"
+            else:
                 # If the title does not include "bug_bytes," include description
                 description = description_html.replace('\n', ' ').strip()
-                file_content += f"\ndescription: {description}"
+                file_content = f"title: {title}\ndescription: {description}\nlink: {link}\ndate: {date_str}"
 
-            # Ensure the file name is unique
-            clean_title = title.lower().replace(' ', '_')
-            file_name = f"{folder_path}/{clean_title}_{int(time.time())}.md"
-
+            file_name = f"{folder_path}/{title.lower().replace(' ', '_')}.md"
             with open(file_name, 'w') as file:
                 file.write(file_content)
             print(f"File created: {file_name}")
