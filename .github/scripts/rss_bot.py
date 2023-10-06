@@ -10,7 +10,7 @@ def fetch_and_create_files(rss_url):
 
     for entry in feed.entries:
         title = entry.title
-        description = entry.summary.replace('\n', ' ')
+        description = entry.description
         file_content = f"title: {title}\ndescription: {description}"
 
         file_name = f"{folder_path}/{title.lower().replace(' ', '_')}.md"
