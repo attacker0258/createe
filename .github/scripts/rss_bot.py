@@ -13,7 +13,6 @@ def fetch_and_create_files(rss_url):
         file_content = f"title: {title}\ndescription: {description}"
 
         file_name = f"{folder_path}/{title.lower().replace(' ', '_')}.md"
-        print(file_content)
         with open(file_name, 'w') as file:
             file.write(file_content)
 
