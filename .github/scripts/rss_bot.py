@@ -3,6 +3,8 @@ import os
 from datetime import datetime
 import time
 
+print("Current working directory:", os.getcwd())
+
 def fetch_and_create_files(rss_urls_file):
     with open(rss_urls_file, 'r') as file:
         rss_urls = [line.strip() for line in file.readlines()]
