@@ -2,12 +2,13 @@ import feedparser
 import os
 from datetime import datetime
 import time
+import yaml
 
 def fetch_and_create_files(rss_urls_file):
-    with open(rss_urls_file, 'r') as file:
+    with open(rss_urls_file, 'r', encoding='utf-8') as file:
         rss_urls = [line.strip() for line in file.readlines()]
 
-    folder_path = "articles"
+    folder_path = "_posts"
     os.makedirs(folder_path, exist_ok=True)
 
     for rss_url in rss_urls:
@@ -22,23 +23,29 @@ def fetch_and_create_files(rss_urls_file):
 
             if date_published:
                 # Convert date to a readable format
-                date_str = datetime.utcfromtimestamp(time.mktime(date_published)).strftime('%Y-%m-%d %H:%M:%S UTC')
+                date_str = datetime.utcfromtimestamp(time.mktime(date_published)).strftime('%Y-%m-%d')
             else:
                 date_str = "N/A"
+
+            # Create a slug from the title for the file name
+            slug = title.lower().replace(' ', '_')
+            file_path = f"{folder_path}/{date_str}-{slug}.md"
 
             # Check if the title includes "bug bytes"
             if "bug bytes" in title.lower():
                 # If the title includes "bug_bytes," use tags only without description
-                file_content = f"title: {title}\ntags: bug_bytes\nlink: {link}\ndate: {date_str}"
+                frontmatter_data = {"title": title, "tags": ["bug_bytes"], "link": link, "date": date_str}
             else:
                 # If the title does not include "bug_bytes," include description
                 description = description_html.replace('\n', ' ').strip()
-                file_content = f"title: {title}\ndescription: {description}\nlink: {link}\ndate: {date_str}"
+                frontmatter_data = {"title": title, "description": description, "link": link, "date": date_str}
 
-            file_name = f"{folder_path}/{title.lower().replace(' ', '_')}.md"
-            with open(file_name, 'w') as file:
-                file.write(file_content)
-            print(f"File created: {file_name}")
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write("---\n")
+                yaml.dump(frontmatter_data, file, default_flow_style=False, allow_unicode=True)
+                file.write("---\n")
+
+            print(f"File created: {file_path}")
 
 if __name__ == "__main__":
     rss_urls_file = '../rss_urls.txt'
