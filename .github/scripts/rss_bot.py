@@ -49,5 +49,5 @@ def fetch_and_create_files(rss_urls_file):
             print(f"File created: {file_path}")
 
 if __name__ == "__main__":
-    rss_urls_file = '../rss_urls.txt'
+    rss_urls_file = 'rss_urls.txt'
     fetch_and_create_files(rss_urls_file)
