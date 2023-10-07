@@ -1,4 +1,7 @@
 ---
+categories:
+- Hackers feed
+- Bug Bytes Archives - Intigriti
 date: '2023-10-04'
 link: https://blog.intigriti.com/2023/10/04/bug-bytes-213-hacking-a-prison-xss-on-steroids-caido-free-for-students-and-bogus-cves/
 tags:

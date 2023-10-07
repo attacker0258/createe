@@ -1,4 +1,7 @@
 ---
+categories:
+- Hackers feed
+- Bug Bytes Archives - Intigriti
 date: '2023-09-13'
 link: https://blog.intigriti.com/2023/09/13/bug-bytes-211-hacking-casinos-microsofts-key-mishap-read-the-docs-and-imagemagick-strikes-again/
 tags:

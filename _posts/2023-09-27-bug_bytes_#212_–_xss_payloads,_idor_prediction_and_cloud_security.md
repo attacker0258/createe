@@ -1,4 +1,7 @@
 ---
+categories:
+- Hackers feed
+- Bug Bytes Archives - Intigriti
 date: '2023-09-27'
 link: https://blog.intigriti.com/2023/09/27/bug-bytes-212-xss-payloads-idor-prediction-and-cloud-security/
 tags:

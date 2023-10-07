@@ -1,4 +1,7 @@
 ---
+categories:
+- Hackers feed
+- Bug Bytes Archives - Intigriti
 date: '2023-07-05'
 link: https://blog.intigriti.com/2023/07/05/bug-bytes-206-citrix-more-like-crit-trix-amiright/
 tags:

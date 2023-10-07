@@ -1,4 +1,7 @@
 ---
+categories:
+- Hackers feed
+- Bug Bytes Archives - Intigriti
 date: '2023-07-19'
 link: https://blog.intigriti.com/2023/07/19/bug-bytes-208-burp-gets-an-update-sharefile-gets-a-cve-and-javascript-files-get-analysed/
 tags:

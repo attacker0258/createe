@@ -1,4 +1,7 @@
 ---
+categories:
+- Hackers feed
+- Bug Bytes Archives - Intigriti
 date: '2023-08-23'
 link: https://blog.intigriti.com/2023/08/23/bug-bytes-209-the-only-graphql-wordlist-you-need-ml-bug-hunting-and-vdp-submissions/
 tags:
