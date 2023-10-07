@@ -33,7 +33,6 @@ jobs:
 
       - name: Run RSS Reader script
         run: |
-          #cd articles
           python .github/scripts/rss_bot.py
 
       - name: Commit and push changes
