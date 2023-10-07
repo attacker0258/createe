@@ -36,10 +36,10 @@ def fetch_and_create_files(rss_urls_file):
             # Check if the title includes "bug bytes"
             if "bug bytes" in title.lower():
                 # If the title includes "bug_bytes," use tags only without description
-                frontmatter_data = {"title": title, "tags": ["newsletter"], "link": link, "date": date_str, "categories": ["Hacking", site_title_from_feed]}
+                frontmatter_data = {"title": title, "tags": ["newsletter"], "link": link, "date": date_str, "categories": ["Hackers feed", site_title_from_feed]}
             else:
                 # If the title does not include "bug_bytes," include description
-                frontmatter_data = {"title": title, "link": link, "date": date_str, "categories": ["Hacking", site_title_from_feed]}
+                frontmatter_data = {"title": title, "link": link, "date": date_str, "categories": ["Hackers feed", site_title_from_feed]}
 
             with open(file_path, 'w', encoding='utf-8') as file:
                 file.write("---\n")
