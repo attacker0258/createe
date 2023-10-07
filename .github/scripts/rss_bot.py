@@ -14,7 +14,8 @@ def fetch_and_create_files(rss_urls_file):
     for rss_url in rss_urls:
         print(f"Fetching RSS feed from {rss_url}...")
         feed = feedparser.parse(rss_url)
-
+        site_title_from_feed = feed.feed.get("title", "Unknown Site Title")
+        
         for entry in feed.entries:
             title = entry.title
             description_html = entry.summary
@@ -35,10 +36,10 @@ def fetch_and_create_files(rss_urls_file):
             # Check if the title includes "bug bytes"
             if "bug bytes" in title.lower():
                 # If the title includes "bug_bytes," use tags only without description
-                frontmatter_data = {"title": title, "tags": ["newsletter"], "link": link, "date": date_str}
+                frontmatter_data = {"title": title, "tags": ["newsletter"], "link": link, "date": date_str, "categories": ["Hacking", site_title_from_feed]}
             else:
                 # If the title does not include "bug_bytes," include description
-                frontmatter_data = {"title": title, "link": link, "date": date_str}
+                frontmatter_data = {"title": title, "link": link, "date": date_str, "categories": ["Hacking", site_title_from_feed]}
 
             with open(file_path, 'w', encoding='utf-8') as file:
                 file.write("---\n")
