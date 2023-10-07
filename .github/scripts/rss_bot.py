@@ -18,6 +18,7 @@ def fetch_and_create_files(rss_urls_file):
         for entry in feed.entries:
             title = entry.title
             description_html = entry.summary
+            description = description_html.replace('\n', ' ').strip()
             link = entry.link
             date_published = entry.published_parsed if hasattr(entry, 'published_parsed') else None
 
@@ -34,19 +35,19 @@ def fetch_and_create_files(rss_urls_file):
             # Check if the title includes "bug bytes"
             if "bug bytes" in title.lower():
                 # If the title includes "bug_bytes," use tags only without description
-                frontmatter_data = {"title": title, "tags": ["bug_bytes"], "link": link, "date": date_str}
+                frontmatter_data = {"title": title, "tags": ["newsletter"], "link": link, "date": date_str}
             else:
                 # If the title does not include "bug_bytes," include description
-                description = description_html.replace('\n', ' ').strip()
-                frontmatter_data = {"title": title, "description": description, "link": link, "date": date_str}
+                frontmatter_data = {"title": title, "link": link, "date": date_str}
 
             with open(file_path, 'w', encoding='utf-8') as file:
                 file.write("---\n")
                 yaml.dump(frontmatter_data, file, default_flow_style=False, allow_unicode=True)
-                file.write("---\n")
+                file.write("---\n\n")
+                file.write(f"{description}\n") 
 
             print(f"File created: {file_path}")
 
 if __name__ == "__main__":
-    rss_urls_file = '../rss_urls.txt'
+    rss_urls_file = 'rss_urls.txt'
     fetch_and_create_files(rss_urls_file)
